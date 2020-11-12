@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Services\CategoryService;
+use Doctrine\ORM\EntityManagerInterface;
 
 class CategoryController extends AbstractController
 {
@@ -13,8 +16,10 @@ class CategoryController extends AbstractController
      */
     public function index(): Response
     {
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
         return $this->render('/admin/category/index.html.twig', [
             'controller_name' => 'CategoryController',
+            'categories' => $categories
         ]);
     }
 
@@ -23,8 +28,35 @@ class CategoryController extends AbstractController
      */
     public function add(): Response
     {
+        if(isset($_POST['title'])) {
+            $category = new Category();
+            $category->setTitle($_POST['title']);
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($category);
+            $manager->flush();
+            return $this->redirectToRoute('category');
+        }
         return $this->render('/admin/category/add.html.twig', [
             'controller_name' => 'CategoryController',
         ]);
+    }
+
+    /**
+     * @Route("/category/update", name="update_category")
+     */
+    public function update(): Response
+    {
+
+    }
+    /**
+     * @Route("/category/delete/{id}", name="delete_category")
+     */
+    public function delete($id): Response
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $catToRemove = $this->getDoctrine()->getRepository(Category::class)->find($id);
+        $manager->remove($catToRemove);
+        $manager->flush();
+        return $this->redirectToRoute('category');
     }
 }

@@ -37,16 +37,18 @@
                             </thead>
                             <tbody id="categoriesBody">
                             <!-- Loop -->
+                            {% for category in categories %}
                             <tr>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
+                                <td>{{ category.title }}</td>
+                                <td> Not Provided</td>
                                 <td >
                                     <a href=""  class="badge badge-info" >Update</a>
                                 </td>
                                 <td >
-                                    <a href="" class="badge badge-danger">Delete</a>
+                                    <a href="{{ path('delete_category', {'id': category.id}) }}" class="badge badge-danger">Delete</a>
                                 </td>
                             </tr>
+                            {% endfor %}
                             <!-- End Loop -->
                             </tbody>
                         </table>
@@ -58,7 +60,7 @@
         </div>
         <a class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em" href="{{ path('new_category') }}">
             <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-            <span class="btn-inner--text">Add new category</span>
+            <span class="btn-inner--text">Add a new category</span>
         </a>
     </div>
 

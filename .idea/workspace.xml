@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4b56be5-9d72-49e7-ae9d-73e7cf04b309" name="Default Changelist" comment="commiting project architecture" />
+    <list default="true" id="d4b56be5-9d72-49e7-ae9d-73e7cf04b309" name="Default Changelist" comment="commiting project architecture">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/category/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/category/add.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/category/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/category/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,6 +137,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/employees" />
@@ -176,7 +185,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605181198281</updated>
-      <workItem from="1605181216119" duration="15148000" />
+      <workItem from="1605181216119" duration="24989000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1605195936218</created>
@@ -204,6 +213,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="commiting project architecture" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605224969400">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605224969400" />
     <state x="464" y="0" key="CommitChangelistDialog2" timestamp="1605196517095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -236,11 +249,11 @@
     </state>
     <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605181570067" />
     <state width="1493" height="360" key="GridCell.Tab.0.right/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605189960782" />
-    <state x="604" y="337" key="NewPhpFileDialog" timestamp="1605211226324">
+    <state x="604" y="337" key="NewPhpFileDialog" timestamp="1605211385783">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="337" key="NewPhpFileDialog/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605196654571" />
-    <state x="604" y="337" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1605211226324" />
+    <state x="604" y="337" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1605211385783" />
     <state x="-1459" y="172" key="SettingsEditor" timestamp="1605181565851">
       <screen x="-1920" y="7" width="1920" height="1040" />
     </state>
@@ -249,22 +262,28 @@
       <screen x="-1920" y="7" width="1920" height="1040" />
     </state>
     <state x="-1152" y="433" key="SymfonyPathDialog/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605181562378" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605196562107">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605211623792">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605196562107" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605211623792" />
     <state x="738" y="83" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1605196149511">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="738" y="83" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605196149511" />
-    <state x="542" y="298" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1605196074315">
+    <state x="542" y="298" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1605211617185">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="542" y="298" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605196074315" />
+    <state x="542" y="298" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605211617185" />
     <state x="493" y="188" width="672" height="537" key="run.anything.popup" timestamp="1605189904934">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1304" y="244" width="672" height="677" key="run.anything.popup/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605181569716" />
     <state x="493" y="188" width="672" height="537" key="run.anything.popup/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605189904934" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605221735035">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605221735035" />
   </component>
 </project>
