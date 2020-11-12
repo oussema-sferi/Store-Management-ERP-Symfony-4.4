@@ -1,0 +1,78 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block body %}
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body" style="text-align: center">
+                <h1 style="color: white">Employees module</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt--7">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h3 class="mb-0">Employees</h3>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control " placeholder="Search Table" id="contact-filter">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="categoriesTable">
+                        <table class="table align-items-center table-flush tablesorter tablepager">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">CIN</th>
+                                <th scope="col">Salary</th>
+                                <th scope="col">Zone</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Is Active</th>
+                                <th scope="col">Store Name</th>
+                                <th scope="col" >Update</th>
+                                <th scope="col" >Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody id="categoriesBody">
+                            <!-- Loop -->
+                            <tr>
+                                <td> Lorem ipsum</td>
+                                <td> Lorem ipsum</td>
+                                <td> Lorem ipsum</td>
+                                <td> Lorem ipsum</td>
+                                <td> Lorem ipsum</td>
+                                <td> Lorem ipsum</td>
+                                <td> Lorem ipsum</td>
+                                <td >
+                                    <a href=""  class="badge badge-info" >Update</a>
+                                </td>
+                                <td >
+                                    <a href="" class="badge badge-danger">Delete</a>
+                                </td>
+                            </tr>
+                            <!-- End Loop -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer py-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em" href="{{ path('new_employee') }}">
+            <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+            <span class="btn-inner--text">Add a new employee</span>
+        </a>
+    </div>
+
+
+
+
+{% endblock %}
