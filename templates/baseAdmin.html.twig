@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RBK</title>
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+        <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
+        <link href="{{ asset('assets/js/plugins/nucleo/css/nucleo.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/argon-dashboard.css?v=1.1.1') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/sorter.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/pager.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/node_modules/sweetalert2/dist/sweetalert2.css') }}" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.0.slim.min.js"
+                integrity="sha384-7WBfQYubrFpye+dGHEeA3fHaTy/wpTFhxdjxqvK04e4orV3z+X4XC4qOX3qnkVC6"
+                crossorigin="anonymous">
+        </script>
+
+    {% endblock %}
+</head>
+<body class="">
+<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Brand -->
+        <a class="navbar-brand pt-0" href="">
+            <b>RBK</b>
+        </a>
+        <!-- User -->
+        <ul class="nav align-items-center d-md-none">
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="ni ni-bell-55"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                    <a class="dropdown-item" href="#">Notification center</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="media align-items-center">
+              <span class="avatar avatar-sm rounded-circle">
+                <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-1-800x800.jpg') }}">
+              </span>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                    <div class=" dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Welcome!</h6>
+                    </div>
+                    <a href="" class="dropdown-item">
+                        <i class="ni ni-single-02"></i>
+                        <span>Profile</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#!" class="dropdown-item">
+                        <i class="ni ni-user-run"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+            <!-- Collapse header -->
+            <div class="navbar-collapse-header d-md-none">
+                <div class="row">
+                    <div class="col-6 collapse-brand">
+                        <a href="">
+                            <img src="{{ asset('assets/img/brand/blue.png') }}">
+                        </a>
+                    </div>
+                    <div class="col-6 collapse-close">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Form -->
+            <form class="mt-4 mb-3 d-md-none">
+                <div class="input-group input-group-rounded input-group-merge">
+                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fa fa-search"></span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- Navigation -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">
+                        <i class="fa fa-home text-yellow" ></i> Home
+                    </a>
+                </li>
+                <li class="nav-item  active ">
+                    <a class="nav-link  active " href="{{ path('attendance_configuration') }}">
+                        <i class="fa fa-gamepad text-yellow" ></i> Attendances Configuration
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('attendance')}}">
+                        <i class="ni ni-calendar-grid-58 text-yellow"></i> Attendances
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('employee') }}">
+                        <i class="fa fa-users text-yellow" ></i> Employees
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('expense') }}">
+                        <i class="fa fa-user text-yellow" ></i> Expenses
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('manager') }}">
+                        <i class="fa fa-male text-yellow" ></i> Managers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('order') }}">
+                        <i class="fa fa-shopping-cart text-yellow"" ></i> Orders
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('salary_bonus') }}">
+                        <i class="fa fa-plus text-yellow" ></i> Salaries Bonus
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('store') }}">
+                        <i class="fa fa-map-marker text-yellow" ></i> Stores
+                    </a>
+                </li>
+            </ul>
+            <!-- Divider -->
+
+            <hr class="my-3">
+            <!-- Heading -->
+            <h6 class="navbar-heading text-muted">Internal</h6>
+            <!-- Navigation -->
+            <ul class="navbar-nav mb-md-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('category')}}">
+                        <i class="fa fa-sitemap"></i> Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('product') }}">
+                        <i class="fa fa-archive"></i> Products
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="">Dashboard</a>
+            <!-- Form -->
+            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Search" type="text">
+                    </div>
+                </div>
+            </form>
+            <!-- User -->
+            <ul class="navbar-nav align-items-center d-none d-md-flex">
+                <li class="nav-item dropdown">
+                    <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-4-800x800.jpg') }}">
+                </span>
+                            <div class="media-body ml-2 d-none d-lg-block">
+                                <span class="mb-0 text-sm  font-weight-bold">RBK</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                        <div class=" dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome!</h6>
+                        </div>
+                        <a href="" class="dropdown-item">
+                            <i class="ni ni-single-02"></i>
+                            <span>Profile</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="" class="dropdown-item">
+                            <i class="ni ni-user-run"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block body %}
+    {% endblock %}
+
+    <footer class="footer ">
+        <div class="row align-items-center justify-content-xl-between">
+            <div class="col-xl-6">
+                <div class="copyright text-center text-xl-left text-muted">
+                    COPYRIGHT© 2020 <a href="" class="font-weight-bold ml-1" > RBK</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% block javascripts %}
+    <script src="{{ asset('assets/js/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/pager.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/sorter.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.extension.js') }}"></script>
+    <script src="{{ asset('assets/js/argon-dashboard.min.js?v=1.1.1') }}"></script>
+    <script src="{{ asset('assets/node_modules/sweetalert2/dist/sweetalert2.all.js') }}"></script>
+    <script src="{{ asset('assets/node_modules/moment/moment.js') }}"></script>
+    <script src="{{ asset('assets/node_modules/jspdf/dist/jspdf.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/paginator/tableManager.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/paginator/filter-table.js') }}"></script>
+{% endblock %}
+{% block internalJs %}
+{% endblock %}
+</body>
+</html>
+
