@@ -6,11 +6,17 @@ use App\Repository\ManagerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=ManagerRepository::class)
+ * @UniqueEntity(
+ *     fields={"username"}
+ * )
  */
-class Manager
+class Manager implements UserInterface
 {
     /**
      * @ORM\Id
@@ -31,8 +37,14 @@ class Manager
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8", minMessage="Your password must be at least 8 characters!")
      */
     private $password;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="You didn't fill the same password")
+     */
+    public $confirmPassword;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -147,5 +159,20 @@ class Manager
         }
 
         return $this;
+    }
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
     }
 }
