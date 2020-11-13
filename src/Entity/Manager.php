@@ -163,7 +163,7 @@ class Manager implements UserInterface
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return ['ROLE_ADMIN'];
     }
 
     public function getSalt()
