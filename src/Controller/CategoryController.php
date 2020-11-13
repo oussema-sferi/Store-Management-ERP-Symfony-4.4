@@ -16,11 +16,7 @@ class CategoryController extends AbstractController
      */
     public function index(): Response
     {
-        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        return $this->render('/admin/category/index.html.twig', [
-            'controller_name' => 'CategoryController',
-            'categories' => $categories
-        ]);
+        return $this->render('/admin/category/index.html.twig', ['categories' => $this->getDoctrine()->getRepository(Category::class)->findAll()]);
     }
 
     /**
@@ -28,17 +24,13 @@ class CategoryController extends AbstractController
      */
     public function add(): Response
     {
+        $doctrine = $this->getDoctrine();
         if(isset($_POST['title'])) {
-            $category = new Category();
-            $category->setTitle($_POST['title']);
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($category);
-            $manager->flush();
+            $service = new CategoryService($doctrine);
+            $service->add($_POST['title']);
             return $this->redirectToRoute('category');
         }
-        return $this->render('/admin/category/add.html.twig', [
-            'controller_name' => 'CategoryController',
-        ]);
+        return $this->render('/admin/category/add.html.twig');
     }
 
     /**
@@ -46,15 +38,14 @@ class CategoryController extends AbstractController
      */
     public function update($id): Response
     {
-        $catToUpdate= $this->getDoctrine()->getRepository(Category::class)->find($id);
+        $doctrine = $this->getDoctrine();
+        $catToUpdate= $doctrine->getRepository(Category::class)->find($id);
         if(isset($_POST['title'])) {
-            $manager = $this->getDoctrine()->getManager();
-            $catToUpdate->setTitle($_POST['title']);
-            $manager->flush();
+            $service = new CategoryService($doctrine);
+            $service->update($id);
             return $this->redirectToRoute('category');
         }
         return $this->render('/admin/category/update.html.twig', [
-            'controller_name' => 'CategoryController',
             'cattoupdate' => $catToUpdate
         ]);
     }
@@ -64,10 +55,9 @@ class CategoryController extends AbstractController
      */
     public function delete($id): Response
     {
-        $manager = $this->getDoctrine()->getManager();
-        $catToRemove = $this->getDoctrine()->getRepository(Category::class)->find($id);
-        $manager->remove($catToRemove);
-        $manager->flush();
+        $doctrine = $this->getDoctrine();
+        $service = new CategoryService($doctrine);
+        $service->delete($id);
         return $this->redirectToRoute('category');
     }
 }
