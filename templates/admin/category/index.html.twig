@@ -42,7 +42,7 @@
                                 <td>{{ category.title }}</td>
                                 <td> Not Provided</td>
                                 <td >
-                                    <a href=""  class="badge badge-info" >Update</a>
+                                    <a href="{{ path('update_category', {'id': category.id}) }}"  class="badge badge-info" >Update</a>
                                 </td>
                                 <td >
                                     <a href="{{ path('delete_category', {'id': category.id}) }}" class="badge badge-danger">Delete</a>

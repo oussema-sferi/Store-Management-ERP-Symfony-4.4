@@ -42,12 +42,23 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/update", name="update_category")
+     * @Route("/category/update/{id}", name="update_category")
      */
-    public function update(): Response
+    public function update($id): Response
     {
-
+        $catToUpdate= $this->getDoctrine()->getRepository(Category::class)->find($id);
+        if(isset($_POST['title'])) {
+            $manager = $this->getDoctrine()->getManager();
+            $catToUpdate->setTitle($_POST['title']);
+            $manager->flush();
+            return $this->redirectToRoute('category');
+        }
+        return $this->render('/admin/category/update.html.twig', [
+            'controller_name' => 'CategoryController',
+            'cattoupdate' => $catToUpdate
+        ]);
     }
+
     /**
      * @Route("/category/delete/{id}", name="delete_category")
      */
