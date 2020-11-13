@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Employee;
+use App\Form\EmployeeFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,8 +25,10 @@ class EmployeeController extends AbstractController
      */
     public function add(): Response
     {
+        $newEmployee = new Employee();
+        $employeeForm = $this->createForm(EmployeeFormType::class, $newEmployee);
         return $this->render('/admin/employees/add.html.twig', [
-            'controller_name' => 'CategoryController',
+            'form' => $employeeForm->createView()
         ]);
     }
 }
