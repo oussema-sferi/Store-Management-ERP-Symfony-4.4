@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4b56be5-9d72-49e7-ae9d-73e7cf04b309" name="Default Changelist" comment="">
+    <list default="true" id="d4b56be5-9d72-49e7-ae9d-73e7cf04b309" name="Default Changelist" comment="CRUD employee implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/EmployeeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/EmployeeService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/employees/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/employees/add.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/employees/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/employees/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605181198281</updated>
-      <workItem from="1605181216119" duration="39585000" />
+      <workItem from="1605181216119" duration="48493000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1605195936218</created>
@@ -223,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605275020494</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="employee add form refactored using symf forms">
+      <created>1605277338362</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605277338362</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,24 +243,26 @@
     <MESSAGE value="CRUD category done!" />
     <MESSAGE value="Update fn Category done" />
     <MESSAGE value="CRUD category implemented in CategoryService" />
-    <option name="LAST_COMMIT_MESSAGE" value="CRUD category implemented in CategoryService" />
+    <MESSAGE value="employee add form refactored using symf forms" />
+    <option name="LAST_COMMIT_MESSAGE" value="employee add form refactored using symf forms" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1156" y="195" key="#com.intellij.ide.util.MemberChooser" timestamp="1605264862764">
       <screen x="-1920" y="7" width="1920" height="1040" />
     </state>
     <state x="-1156" y="195" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605264862764" />
-    <state x="-1296" y="218" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605271880722">
-      <screen x="-1920" y="7" width="1920" height="1040" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605299242698">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1296" y="218" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605271880722" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605224969400" />
-    <state x="-1340" y="7" key="CommitChangelistDialog2" timestamp="1605275018912">
-      <screen x="-1920" y="7" width="1920" height="1040" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605281236251" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605299242698" />
+    <state x="464" y="0" key="CommitChangelistDialog2" timestamp="1605299058332">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1340" y="7" key="CommitChangelistDialog2/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605275018912" />
-    <state x="464" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605258050990" />
-    <state x="464" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605225442785" />
+    <state x="464" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605277336866" />
+    <state x="464" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605299058332" />
     <state x="-1236" y="401" key="ComposerCompositePathDialog" timestamp="1605181376126">
       <screen x="-1920" y="7" width="1920" height="1040" />
     </state>
@@ -261,29 +271,29 @@
       <screen x="-1920" y="7" width="1920" height="1040" />
     </state>
     <state x="-1180" y="268" key="FileChooserDialogImpl/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605181559602" />
-    <state width="1493" height="117" key="GridCell.Tab.0.bottom" timestamp="1605276434738">
+    <state width="1493" height="117" key="GridCell.Tab.0.bottom" timestamp="1605280313929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="117" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605269755378" />
-    <state width="1493" height="117" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605276434738" />
+    <state width="1493" height="117" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605280313929" />
     <state width="1493" height="360" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605256728446" />
-    <state width="1493" height="117" key="GridCell.Tab.0.center" timestamp="1605276434738">
+    <state width="1493" height="117" key="GridCell.Tab.0.center" timestamp="1605280313929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="117" key="GridCell.Tab.0.center/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605269755378" />
-    <state width="1493" height="117" key="GridCell.Tab.0.center/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605276434738" />
+    <state width="1493" height="117" key="GridCell.Tab.0.center/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605280313929" />
     <state width="1493" height="360" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605256728445" />
-    <state width="1493" height="117" key="GridCell.Tab.0.left" timestamp="1605276434738">
+    <state width="1493" height="117" key="GridCell.Tab.0.left" timestamp="1605280313929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="117" key="GridCell.Tab.0.left/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605269755378" />
-    <state width="1493" height="117" key="GridCell.Tab.0.left/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605276434738" />
+    <state width="1493" height="117" key="GridCell.Tab.0.left/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605280313929" />
     <state width="1493" height="360" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605256728445" />
-    <state width="1493" height="117" key="GridCell.Tab.0.right" timestamp="1605276434738">
+    <state width="1493" height="117" key="GridCell.Tab.0.right" timestamp="1605280313929">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="117" key="GridCell.Tab.0.right/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605269755378" />
-    <state width="1493" height="117" key="GridCell.Tab.0.right/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605276434738" />
+    <state width="1493" height="117" key="GridCell.Tab.0.right/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605280313929" />
     <state width="1493" height="360" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605256728446" />
     <state x="595" y="139" key="NewPhpClassDialog" timestamp="1605263600115">
       <screen x="0" y="0" width="1536" height="824" />
@@ -302,10 +312,10 @@
       <screen x="-1920" y="7" width="1920" height="1040" />
     </state>
     <state x="-1152" y="433" key="SymfonyPathDialog/0.0.1536.824/-1920.7.1920.1040@-1920.7.1920.1040" timestamp="1605181562378" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605258059786">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605277346035">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605258059786" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1920.7.1920.1040@0.0.1536.824" timestamp="1605277346035" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605225453687" />
     <state x="738" y="83" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1605196149511">
       <screen x="0" y="0" width="1536" height="824" />

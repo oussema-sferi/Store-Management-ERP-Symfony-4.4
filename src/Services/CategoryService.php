@@ -3,10 +3,7 @@
 namespace App\Services;
 
 use App\Entity\Category;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Mapping;
-use Symfony\Component\HttpFoundation\Response;
+
 
 
 class CategoryService

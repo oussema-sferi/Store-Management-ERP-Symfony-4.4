@@ -42,21 +42,23 @@
                             </thead>
                             <tbody id="categoriesBody">
                             <!-- Loop -->
+                            {% for employee in employees %}
                             <tr>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
+                                <td>{{employee.fullName }}</td>
+                                <td>{{employee.cin }}</td>
+                                <td>{{employee.salary }}</td>
+                                <td>{{employee.zone }}</td>
+                                <td>{{employee.address }}</td>
+                                <td>{{employee.isActive }}</td>
+                                <td>Not Provided</td>
                                 <td >
-                                    <a href=""  class="badge badge-info" >Update</a>
+                                    <a href="{{ path('update_employee', {'id': employee.id}) }}"  class="badge badge-info" >Update</a>
                                 </td>
                                 <td >
-                                    <a href="" class="badge badge-danger">Delete</a>
+                                    <a href="{{ path('delete_employee', {'id': employee.id}) }}" class="badge badge-danger">Delete</a>
                                 </td>
                             </tr>
+                            {% endfor %}
                             <!-- End Loop -->
                             </tbody>
                         </table>
