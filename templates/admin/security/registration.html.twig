@@ -1,4 +1,4 @@
-
+{% extends 'baseAdminSecurity.html.twig' %}
 
 {% block body %}
     <div class="header bg-gradient-primary py-7 py-lg-8">
@@ -27,7 +27,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                 </div>
-                                {{ form_row(form.fullName, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_widget(form.fullName, {'attr': {'class': 'form-control'}}) }}
                             </div>
                         </div>
                             <div class="form-group mb-3">
@@ -35,7 +35,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
-                                    {{ form_row(form.username, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -43,7 +43,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    {{ form_row(form.password, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                             </div>
                         <div class="form-group">
@@ -51,7 +51,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                 </div>
-                                {{ form_row(form.confirmPassword, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_widget(form.confirmPassword, {'attr': {'class': 'form-control'}}) }}
                             </div>
                         </div>
                             <div class="custom-control custom-control-alternative custom-checkbox">

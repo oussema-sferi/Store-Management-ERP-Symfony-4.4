@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RBK</title>
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
+        <link href="{{ asset('assets/js/plugins/nucleo/css/nucleo.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/argon-dashboard.css?v=1.1.1') }}" rel="stylesheet" />
+        <style>
+            .col-centered{
+                float: none;
+                margin: 0 auto;
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/plugins/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.extension.js') }}"></script>
+    <script src="{{ asset('assets/js/argon-dashboard.min.js?v=1.1.1') }}"></script>
+{% endblock %}
+</body>
+</html>

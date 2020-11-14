@@ -13,7 +13,7 @@ use App\Services\EmployeeService;
 class EmployeeController extends AbstractController
 {
     /**
-     * @Route("/employee", name="employee")
+     * @Route("/admin/employee", name="employee")
      */
     public function index(): Response
     {
@@ -21,7 +21,7 @@ class EmployeeController extends AbstractController
     }
 
     /**
-     * @Route("/employee/new", name="new_employee")
+     * @Route("/admin/employee/new", name="new_employee")
      */
     public function add(Request $request): Response
     {
@@ -40,7 +40,7 @@ class EmployeeController extends AbstractController
     }
 
     /**
-     * @Route("/employee/update/{id}", name="update_employee")
+     * @Route("/admin/employee/update/{id}", name="update_employee")
      */
     public function update(Request $request, $id): Response
     {
@@ -61,7 +61,7 @@ class EmployeeController extends AbstractController
     }
 
     /**
-     * @Route("/employee/delete/{id}", name="delete_employee")
+     * @Route("/admin/employee/delete/{id}", name="delete_employee")
      */
     public function delete($id): Response
     {

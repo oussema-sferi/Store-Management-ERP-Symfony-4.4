@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/category", name="category")
+     * @Route("/admin/category", name="category")
      */
     public function index(): Response
     {
@@ -20,7 +20,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/new", name="new_category")
+     * @Route("/admin/category/new", name="new_category")
      */
     public function add(): Response
     {
@@ -34,7 +34,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/update/{id}", name="update_category")
+     * @Route("/admin/category/update/{id}", name="update_category")
      */
     public function update($id): Response
     {
@@ -51,7 +51,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/delete/{id}", name="delete_category")
+     * @Route("/admin/category/delete/{id}", name="delete_category")
      */
     public function delete($id): Response
     {

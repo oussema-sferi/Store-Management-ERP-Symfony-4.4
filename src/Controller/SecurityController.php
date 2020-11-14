@@ -19,7 +19,7 @@ class SecurityController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $newManager = new Manager();
-        $newManager->setRole('ROLE_ADMIN');
+        $newManager->setRole('ROLE_USER');
         $newManager->setCreationDate(new \DateTime());
         $form = $this->createForm(RegistrationFormType::class, $newManager);
         $form->handleRequest($request);
