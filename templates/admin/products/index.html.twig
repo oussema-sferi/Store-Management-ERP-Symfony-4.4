@@ -4,7 +4,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
             <div class="header-body" style="text-align: center">
-                <h1 style="color: white">Products module</h1>
+                <h1 style="color: white">Products</h1>
             </div>
         </div>
     </div>
@@ -38,18 +38,20 @@
                             </thead>
                             <tbody id="categoriesBody">
                             <!-- Loop -->
+                            {% for product in products %}
                             <tr>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
+                                <td>{{product.name }}</td>
+                                <td>{{product.price }}</td>
+                                <td>{{product.category }}</td>
+                                <td>Not Provided</td>
                                 <td >
-                                    <a href=""  class="badge badge-info" >Update</a>
+                                    <a href="{{ path('update_product', {'id': product.id}) }}"  class="badge badge-info" >Update</a>
                                 </td>
                                 <td >
-                                    <a href="" class="badge badge-danger">Delete</a>
+                                    <a href="{{ path('delete_product', {'id': product.id}) }}" class="badge badge-danger">Delete</a>
                                 </td>
                             </tr>
+                            {% endfor %}
                             <!-- End Loop -->
                             </tbody>
                         </table>
