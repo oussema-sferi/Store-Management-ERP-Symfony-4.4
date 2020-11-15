@@ -15,7 +15,6 @@ class ExpenseFormType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('amount')
-            ->add('creationDate')
             ->add('store')
         ;
     }

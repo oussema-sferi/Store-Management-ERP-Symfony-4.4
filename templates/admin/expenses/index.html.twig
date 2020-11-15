@@ -5,7 +5,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
             <div class="header-body" style="text-align: center">
-                <h1 style="color: white">Expenses module</h1>
+                <h1 style="color: white">Expenses</h1>
             </div>
         </div>
     </div>
@@ -40,19 +40,21 @@
                             </thead>
                             <tbody id="categoriesBody">
                             <!-- Loop -->
+                            {% for expense in expenses %}
                             <tr>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
+                                <td>{{ expense.title }}</td>
+                                <td>{{ expense.description }}</td>
+                                <td>{{ expense.amount }}</td>
+                                <td>NOT Provided</td>
+                                <td>{{ expense.creationDate | date }}</td>
                                 <td >
-                                    <a href=""  class="badge badge-info" >Update</a>
+                                    <a href="{{ path('update_expense', {'id': expense.id}) }}"  class="badge badge-info" >Update</a>
                                 </td>
                                 <td >
-                                    <a href="" class="badge badge-danger">Delete</a>
+                                    <a href="{{ path('delete_expense', {'id': expense.id}) }}" class="badge badge-danger">Delete</a>
                                 </td>
                             </tr>
+                            {% endfor %}
                             <!-- End Loop -->
                             </tbody>
                         </table>
@@ -62,10 +64,10 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em">
+        <a class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em" href="{{ path('new_expense') }}">
             <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-            <span class="btn-inner--text">Add new category</span>
-        </button>
+            <span class="btn-inner--text">Add a new expense</span>
+        </a>
     </div>
 
 
