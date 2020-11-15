@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Form\CategoryFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Services\CategoryService;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends AbstractController
 {
@@ -22,31 +24,40 @@ class CategoryController extends AbstractController
     /**
      * @Route("/admin/category/new", name="new_category")
      */
-    public function add(): Response
+    public function add(Request $request): Response
     {
+        $newCategory = new Category();
+        $categoryForm = $this->createForm(CategoryFormType::class, $newCategory);
+        $categoryForm->handleRequest($request);
         $doctrine = $this->getDoctrine();
-        if(isset($_POST['title'])) {
+        if($categoryForm->isSubmitted()) {
             $service = new CategoryService($doctrine);
-            $service->add($_POST['title']);
+            $service->add($newCategory);
             return $this->redirectToRoute('category');
         }
-        return $this->render('/admin/category/add.html.twig');
+        return $this->render('/admin/category/add.html.twig', [
+            'form' => $categoryForm->createView()
+        ]);
     }
 
     /**
      * @Route("/admin/category/update/{id}", name="update_category")
      */
-    public function update($id): Response
+    public function update(Request $request, $id): Response
     {
+        $newCategory = new Category();
+        $categoryForm = $this->createForm(CategoryFormType::class, $newCategory);
+        $categoryForm->handleRequest($request);
         $doctrine = $this->getDoctrine();
-        $catToUpdate= $doctrine->getRepository(Category::class)->find($id);
-        if(isset($_POST['title'])) {
+        $categoryToUpdate= $doctrine->getRepository(Category::class)->find($id);
+        if($categoryForm->isSubmitted()) {
             $service = new CategoryService($doctrine);
-            $service->update($id);
+            $service->update($categoryToUpdate, $newCategory);
             return $this->redirectToRoute('category');
         }
         return $this->render('/admin/category/update.html.twig', [
-            'cattoupdate' => $catToUpdate
+            'form' => $categoryForm->createView(),
+            'categoryToUpd' => $categoryToUpdate
         ]);
     }
 

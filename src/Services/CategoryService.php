@@ -13,19 +13,16 @@ class CategoryService
     {
         $this->manager = $worker;
     }
-    public function add($title)
+    public function add($category)
     {
-        $category = new Category();
-        $category->setTitle($title);
         $this->manager->getManager()->persist($category);
         $this->manager->getManager()->flush();
     }
 
-    public function update($id)
+    public function update($categoryToUpdate, $newCategory)
     {
-        $catToUpdate = $this->manager->getRepository(Category::class)->find($id);
-        $catToUpdate->setTitle($_POST['title']);
-        $this->manager->getManager()->persist($catToUpdate);
+        $categoryToUpdate->setTitle($newCategory->getTitle());
+        $this->manager->getManager()->persist($categoryToUpdate);
         $this->manager->getManager()->flush();
     }
 
