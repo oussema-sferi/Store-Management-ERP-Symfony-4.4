@@ -156,7 +156,7 @@ class Manager implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-
+        $roles[] = 'ROLE_MANAGER';
 
         return array_unique($roles);
     }

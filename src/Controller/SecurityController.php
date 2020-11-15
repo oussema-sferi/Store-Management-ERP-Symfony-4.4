@@ -30,7 +30,7 @@ class SecurityController extends AbstractController
             $man = $this->getDoctrine()->getManager();
             $man->persist($newManager);
             $man->flush();
-            return $this->redirectToRoute('security_login');
+            return $this->redirectToRoute('manager');
         }
         return $this->render('/admin/security/registration.html.twig', [
             'form' => $form->createView()
