@@ -34,7 +34,7 @@
                                 <th scope="col">Salary</th>
                                 <th scope="col">Zone</th>
                                 <th scope="col">Address</th>
-                                <th scope="col">Is Active</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Store Name</th>
                                 <th scope="col" >Update</th>
                                 <th scope="col" >Delete</th>
@@ -50,7 +50,7 @@
                                 <td>{{employee.zone }}</td>
                                 <td>{{employee.address }}</td>
                                 <td>{{employee.isActive }}</td>
-                                <td>Not Provided</td>
+                                <td>{{employee.store }}</td>
                                 <td >
                                     <a href="{{ path('update_employee', {'id': employee.id}) }}"  class="badge badge-info" >Update</a>
                                 </td>

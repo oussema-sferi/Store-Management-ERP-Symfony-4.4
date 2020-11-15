@@ -26,6 +26,7 @@ class EmployeeService
         $employeetoUpd->setZone($newEmployee->getZone());
         $employeetoUpd->setAddress($newEmployee->getAddress());
         $employeetoUpd->setIsActive($newEmployee->getIsActive());
+        $employeetoUpd->setStore($newEmployee->getStore());
         $this->manager->getManager()->persist($employeetoUpd);
         $this->manager->getManager()->flush();
     }

@@ -20,6 +20,7 @@ security:
             form_login:
                 login_path: security_login
                 check_path: security_login
+                success_handler: redirect.after.login
             logout:
                 path: security_logout
                 target: security_login

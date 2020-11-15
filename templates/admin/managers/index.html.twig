@@ -5,7 +5,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
             <div class="header-body" style="text-align: center">
-                <h1 style="color: white">Managers module</h1>
+                <h1 style="color: white">Managers</h1>
             </div>
         </div>
     </div>
@@ -39,18 +39,20 @@
                             </thead>
                             <tbody id="categoriesBody">
                             <!-- Loop -->
+                            {% for manager in managers %}
                             <tr>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
+                                <td>{{ manager.fullName }}</td>
+                                <td>{{ manager.username }}</td>
+                                <td>{{ manager.roles[0] }}</td>
+                                <td>{{ manager.creationDate | date }}</td>
                                 <td >
-                                    <a href=""  class="badge badge-info" >Update</a>
+                                    <a href="{{ path('update_manager', {'id': manager.id}) }}"  class="badge badge-info" >Update</a>
                                 </td>
                                 <td >
-                                    <a href="" class="badge badge-danger">Delete</a>
+                                    <a href="{{ path('delete_manager', {'id': manager.id}) }}" class="badge badge-danger">Delete</a>
                                 </td>
                             </tr>
+                            {% endfor %}
                             <!-- End Loop -->
                             </tbody>
                         </table>
@@ -60,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <a class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em" href="{{ path('new_manager') }}">
+        <a class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em" href="{{ path('security_registration') }}">
             <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
             <span class="btn-inner--text">Add a new manager</span>
         </a>

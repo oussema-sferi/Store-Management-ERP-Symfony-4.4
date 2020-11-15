@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Manager;
+use App\Form\RegistrationFormType;
+use App\Services\ManagerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class ManagerController extends AbstractController
 {
@@ -13,18 +17,18 @@ class ManagerController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('/admin/managers/index.html.twig', [
-            'controller_name' => 'ManagerController',
-        ]);
+        return $this->render('/admin/managers/index.html.twig', ['managers' => $this->getDoctrine()->getRepository(Manager::class)->findAll()]);
     }
 
+
     /**
-     * @Route("/admin/manager/new", name="new_manager")
+     * @Route("/admin/manager/delete/{id}", name="delete_manager")
      */
-    public function add(): Response
+    public function delete($id): Response
     {
-        return $this->render('/admin/managers/add.html.twig', [
-            'controller_name' => 'CategoryController',
-        ]);
+        $doctrine = $this->getDoctrine();
+        $service = new ManagerService($doctrine);
+        $service->delete($id);
+        return $this->redirectToRoute('manager');
     }
 }
