@@ -5,7 +5,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
             <div class="header-body" style="text-align: center">
-                <h1 style="color: white">Stores module</h1>
+                <h1 style="color: white">Stores</h1>
             </div>
         </div>
     </div>
@@ -30,10 +30,12 @@
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col">Store Name</th>
-                                <th scope="col">Manager Name</th>
                                 <th scope="col">Phone</th>
                                 <th scope="col">Login</th>
-                                <th scope="col">Is Active</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Manager</th>
+                                <th scope="col">Attendance Config</th>
                                 <th scope="col">Creation Date</th>
                                 <th scope="col" >Update</th>
                                 <th scope="col" >Delete</th>
@@ -41,20 +43,24 @@
                             </thead>
                             <tbody id="categoriesBody">
                             <!-- Loop -->
+                            {% for store in stores %}
                             <tr>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
+                                <td>{{ store.name }}</td>
+                                <td>{{ store.phone }}</td>
+                                <td>{{ store.login }}</td>
+                                <td>{{ store.password }}</td>
+                                <td>{{ store.isActive }}</td>
+                                <td>{{ store.manager }}</td>
+                                <td>Not Provided</td>
+                                <td>{{ store.creationDate | date }}</td>
                                 <td >
-                                    <a href=""  class="badge badge-info" >Update</a>
+                                    <a href="{{ path('update_store', {'id': store.id}) }}"  class="badge badge-info" >Update</a>
                                 </td>
                                 <td >
-                                    <a href="" class="badge badge-danger">Delete</a>
+                                    <a href="{{ path('delete_store', {'id': store.id}) }}" class="badge badge-danger">Delete</a>
                                 </td>
                             </tr>
+                            {% endfor %}
                             <!-- End Loop -->
                             </tbody>
                         </table>
@@ -66,7 +72,7 @@
         </div>
         <a class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em" href="{{ path('new_store') }}">
             <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-            <span class="btn-inner--text">Add new store</span>
+            <span class="btn-inner--text">Add a new store</span>
         </a>
     </div>
 

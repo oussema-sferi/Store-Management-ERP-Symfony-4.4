@@ -175,4 +175,10 @@ class Manager implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+    public function __toString(){
+        // to show the name of the User in the select
+        return $this->fullName;
+        // to show the id of the User in the select
+        // return $this->id;
+    }
 }

@@ -17,7 +17,6 @@ class StoreFormType extends AbstractType
             ->add('isActive')
             ->add('login')
             ->add('password')
-            ->add('creationDate')
             ->add('manager')
             ->add('attendanceConfiguration')
         ;
