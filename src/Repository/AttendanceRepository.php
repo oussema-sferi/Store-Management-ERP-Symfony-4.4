@@ -47,4 +47,12 @@ class AttendanceRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getAttendanceWhereEmployee($employeeId)
+    {
+        return $this->createQueryBuilder('a')
+            ->join('a.employee', 's')
+            ->where("s.id = $employeeId")
+            ->getQuery()
+            ->getResult();
+    }
 }
