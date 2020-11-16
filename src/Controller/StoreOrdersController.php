@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,8 +24,12 @@ class StoreOrdersController extends AbstractController
      */
     public function new(): Response
     {
+        $currentUser = $this->getUser();
+        $catsManager = $this->getDoctrine()->getRepository(Category::class)->getCategoriesWhereStoresWhereManager($currentUser->getId());
         return $this->render('store/orders/new.html.twig', [
-            'controller_name' => 'StoreOrdersController',
+            'catsManager' => $catsManager,
         ]);
     }
+
+
 }

@@ -12,10 +12,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AttendanceConfigurationController extends AbstractController
 {
+
     /**
      * @Route("/admin/attendance/configuration", name="attendance_configuration")
      */
-    public function index(Request $request): Response
+    public function index(): Response
+    {
+        return $this->render('/admin/attendanceConfiguration/index.html.twig', ['attendancesConfig' => $this->getDoctrine()->getRepository(AttendanceConfiguration::class)->findAll()]);
+    }
+
+    /**
+     * @Route("/admin/attendance/configuration/new", name="new_attendance_configuration")
+     */
+    public function add(Request $request): Response
     {
         $newAttConfig = new AttendanceConfiguration();
         $attConfigForm = $this->createForm(AttendanceConfigurationFormType::class, $newAttConfig);

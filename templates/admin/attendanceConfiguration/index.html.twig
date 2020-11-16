@@ -29,6 +29,7 @@
                         <table class="table align-items-center table-flush tablesorter tablepager">
                             <thead class="thead-light">
                             <tr>
+                                <th scope="col">Store</th>
                                 <th scope="col">Bonus Amount</th>
                                 <th scope="col">Malus Amount</th>
                                 <th scope="col">Check-In Time</th>
@@ -39,11 +40,13 @@
                             </thead>
                             <tbody id="categoriesBody">
                             <!-- Loop -->
+                            {% for attendanceConfig in attendancesConfig %}
                             <tr>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
+                                <td>{{ attendanceConfig.store }}</td>
+                                <td>{{ attendanceConfig.bonusAmount }}</td>
+                                <td>{{ attendanceConfig.malusAmount }}</td>
+                                <td>{{ attendanceConfig.checkInTime | date('H:i') }}</td>
+                                <td>{{ attendanceConfig.checkOutTime | date('H:i') }}</td>
                                 <td >
                                     <a href=""  class="badge badge-info" >Update</a>
                                 </td>
@@ -51,6 +54,7 @@
                                     <a href="" class="badge badge-danger">Delete</a>
                                 </td>
                             </tr>
+                            {% endfor %}
                             <!-- End Loop -->
                             </tbody>
                         </table>
@@ -60,10 +64,10 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em">
+        <a class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em" href="{{ path('new_attendance_configuration') }}">
             <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-            <span class="btn-inner--text">Add new category</span>
-        </button>
+            <span class="btn-inner--text">Add a new configuration</span>
+        </a>
     </div>
 
 

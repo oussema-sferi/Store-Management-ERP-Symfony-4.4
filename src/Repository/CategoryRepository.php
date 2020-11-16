@@ -47,4 +47,14 @@ class CategoryRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getCategoriesWhereStoresWhereManager($managerId)
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.store', 's')
+            ->join('s.manager', 'm')
+            ->where("m.id = $managerId")
+            ->getQuery()
+            ->getResult();
+    }
 }
