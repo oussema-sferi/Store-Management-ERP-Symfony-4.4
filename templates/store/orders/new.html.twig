@@ -18,9 +18,9 @@
                     <div class="card-header border-0">
                         <div class="row">
                             <div class="col-md-9">
-                                <select class="form-control " placeholder="Category" style="width: 250px">
+                                <select class="form-control " placeholder="Category" style="width: 250px" id="category" onchange="fetchProducts()">
                                     {% for catManager in catsManager %}
-                                    <option value="">{{ catManager.title }}</option>
+                                    <option value="{{ catManager.id }}">{{ catManager.title }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -33,33 +33,16 @@
                         <table class="table align-items-center table-flush tablesorter tablepager">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Total</th>
-                                <th scope="col">Reduction Ratio</th>
-                                <th scope="col">Final Price</th>
-                                <th scope="col">Employee Name</th>
-                                <th scope="col">Store Name</th>
-                                <th scope="col">Final Price</th>
+                                <th scope="col">id</th>
+                                <th scope="col">name</th>
+                                <th scope="col">price</th>
                                 <th scope="col" >Update</th>
                                 <th scope="col" >Delete</th>
-                                <th scope="col">Creation Date</th>
                             </tr>
                             </thead>
                             <tbody id="categoriesBody">
                             <!-- Loop -->
-                            <tr>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td >
-                                    <a href=""  class="badge badge-info" >Update</a>
-                                </td>
-                                <td >
-                                    <a href="" class="badge badge-danger">Delete</a>
-                                </td>
-                                <td> Lorem ipsum</td>
-                            </tr>
+
                             <!-- End Loop -->
                             </tbody>
                         </table>
@@ -71,11 +54,47 @@
         </div>
         <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em">
             <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-            <span class="btn-inner--text">Add new category</span>
+            <span class="btn-inner--text">Add a new order</span>
         </button>
     </div>
 
 
+{% endblock %}
+{% block internalJs %}
+
+    <script>
+    function fetchProducts() {
+       let selectedCat = $('#category');
+       console.log(selectedCat.val());
+        $.ajax({
+            url:"{{ path('fetch_products') }}",
+            method: "GET",
+            dataType: 'json',
+            data : {id:selectedCat.val()},
+            success: (e) => {
+                let table = $('#categoriesBody');
+                table.empty();
+                e.forEach(payload => {
+                    table.append(" <tr>\n" +
+                        "                                <td>"+ payload.id +"</td>\n" +
+                        "                                <td>"+ payload.name +"</td>\n" +
+                        "                                <td>"+ payload.price +"</td>\n" +
+                        "                                <td >\n" +
+                        "                                    <a href=\"\"  class=\"badge badge-info\" >Update</a>\n" +
+                        "                                </td>\n" +
+                        "                                <td >\n" +
+                        "                                    <a href=\"\" class=\"badge badge-danger\">Delete</a>\n" +
+                        "                                </td>\n" +
+                        "                            </tr>")
+                })
+            },
+            error : (f) => {
+                console.log(f);
+            }
+        })
+    }
+
+    </script>
 
 
 {% endblock %}
