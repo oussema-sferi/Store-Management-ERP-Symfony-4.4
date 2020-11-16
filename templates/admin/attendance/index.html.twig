@@ -5,7 +5,7 @@
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
             <div class="header-body" style="text-align: center">
-                <h1 style="color: white">Attendances module</h1>
+                <h1 style="color: white">Attendances</h1>
             </div>
         </div>
     </div>
@@ -29,28 +29,20 @@
                         <table class="table align-items-center table-flush tablesorter tablepager">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Employee Name</th>
+                                <th scope="col">Employee</th>
                                 <th scope="col">Check In</th>
-                                <th scope="col">Check Out</th>
-                                <th scope="col">Is Valid</th>
-                                <th scope="col" >Update</th>
-                                <th scope="col" >Delete</th>
+                                <th scope="col" >Check Out</th>
                             </tr>
                             </thead>
                             <tbody id="categoriesBody">
                             <!-- Loop -->
-                            <tr>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td> Lorem ipsum</td>
-                                <td >
-                                    <a href=""  class="badge badge-info" >Update</a>
-                                </td>
-                                <td >
-                                    <a href="" class="badge badge-danger">Delete</a>
-                                </td>
-                            </tr>
+                            {% for attendance in attendances %}
+                                <tr>
+                                    <td>{{ attendance.employee }}</td>
+                                    <td>{{ attendance.checkIn | date }}</td>
+                                    <td>{{ attendance.checkOut | date }}</td>
+                                </tr>
+                            {% endfor %}
                             <!-- End Loop -->
                             </tbody>
                         </table>
@@ -60,10 +52,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em">
-            <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-            <span class="btn-inner--text">Add new category</span>
-        </button>
+
     </div>
 
 

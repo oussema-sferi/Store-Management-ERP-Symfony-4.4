@@ -49,10 +49,7 @@ class StoreAttendanceController extends AbstractController
                     $manager->persist($attendanceToUpd[0]);
                     $manager->flush();
                 }
-
             }
-
-
             return $this->redirectToRoute('store_orders');
         }
     }
