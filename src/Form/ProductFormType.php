@@ -15,6 +15,7 @@ class ProductFormType extends AbstractType
             ->add('name')
             ->add('price')
             ->add('category')
+            ->add('quantityInStock')
             ->add('store')
         ;
     }

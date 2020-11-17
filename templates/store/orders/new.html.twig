@@ -37,6 +37,7 @@
                                 <th scope="col">id</th>
                                 <th scope="col">name</th>
                                 <th scope="col">price</th>
+                                <th scope="col">stock</th>
                                 <th scope="col" >add to cart</th>
                             </tr>
                             </thead>
@@ -71,6 +72,7 @@
                                 <th scope="col">id</th>
                                 <th scope="col">name</th>
                                 <th scope="col">unit price</th>
+                                <th scope="col">stock</th>
                             </tr>
                             </thead>
                             <tbody id="cartBody">
@@ -82,6 +84,7 @@
                                     <td>{{ p.id }}</td>
                                     <td>{{ p.name }}</td>
                                     <td>{{ p.price }}</td>
+                                    <td>{{ p.quantityInStock }}</td>
                                 </tr>
                                 {% endfor %}
                             {% endif %}
@@ -114,6 +117,8 @@
                         "                                <td>"+ prod.id +"</td>\n" +
                         "                                <td>"+ prod.name +"</td>\n" +
                         "                                <td>"+ prod.price +"</td>\n" +
+                        "                                <td>"+ prod.quantityInStock +"</td>\n" +
+
                         "                                <td>\n" +
                         "                                    <button class=\"badge badge-success\" onclick='addToCart(" + prod.id + ")'>+</button>\n" +
                         "                                </td>\n" +
@@ -144,6 +149,7 @@
                         "                                <td>" + e.id + "</td>\n" +
                         "                                <td>" +e.name + "</td>\n" +
                         "                                <td>" +e.price + "</td>\n" +
+                        "                                <td>" +e.quantityInStock + "</td>\n" +
                         "                            </tr>"
                     )
 

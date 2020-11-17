@@ -61,7 +61,7 @@ class StoreOrdersController extends AbstractController
             if($category instanceof Category) {
                 $products = $category->getProducts();
                 $serializer = new Serializer([new ObjectNormalizer()]);
-                $result = $serializer->normalize($products,'json',['attributes' => ['id','name','price']]);
+                $result = $serializer->normalize($products,'json',['attributes' => ['id','name','price', 'quantityInStock']]);
                 return new JsonResponse($result);
             } else {
                 return new JsonResponse(['message'=> 'Category not found!']);
@@ -87,9 +87,8 @@ class StoreOrdersController extends AbstractController
                 array_push($newArray,$product);
                 $this->session->set('products', $newArray);
             }
-
             $serializer = new Serializer([new ObjectNormalizer()]);
-            $result = $serializer->normalize($product,'json',['attributes' => ['id','name','price']]);
+            $result = $serializer->normalize($product,'json',['attributes' => ['id','name','price', 'quantityInStock']]);
             return new JsonResponse($result);
         }
         return new Response('use Ajax');

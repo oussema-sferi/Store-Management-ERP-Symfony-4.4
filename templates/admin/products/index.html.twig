@@ -30,8 +30,9 @@
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Category Name</th>
-                                <th scope="col">Store Name</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Store</th>
                                 <th scope="col" >Update</th>
                                 <th scope="col" >Delete</th>
                             </tr>
@@ -42,8 +43,9 @@
                             <tr>
                                 <td>{{product.name }}</td>
                                 <td>{{product.price }}</td>
+                                <td>{{product.quantityInStock }}</td>
                                 <td>{{product.category }}</td>
-                                <td>Not Provided</td>
+                                <td>{{product.store }}</td>
                                 <td >
                                     <a href="{{ path('update_product', {'id': product.id}) }}"  class="badge badge-info" >Update</a>
                                 </td>
