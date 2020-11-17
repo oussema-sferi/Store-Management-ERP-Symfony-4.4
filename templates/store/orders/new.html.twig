@@ -36,8 +36,8 @@
                             <tr>
                                 <th scope="col">id</th>
                                 <th scope="col">name</th>
-                                <th scope="col">price</th>
                                 <th scope="col">stock</th>
+                                <th scope="col">price</th>
                                 <th scope="col" >add to cart</th>
                             </tr>
                             </thead>
@@ -61,7 +61,7 @@
                     <div class="card-header border-0">
                         <div class="row">
                             <div class="col-md-9">
-                                <h3 class="mb-0" style="text-align: center">My Cart</h3>
+                                <h3 class="mb-0" style="font-size: x-large; font-family: Cambria; text-align: center">My Cart</h3>
                             </div>
                         </div>
                     </div>
@@ -71,25 +71,35 @@
                             <tr>
                                 <th scope="col">id</th>
                                 <th scope="col">name</th>
-                                <th scope="col">unit price</th>
                                 <th scope="col">stock</th>
+                                <th scope="col">unit price</th>
                             </tr>
                             </thead>
                             <tbody id="cartBody">
                             <!-- Loop -->
                             {% set session = app.session.get('products') %}
+                            {% set totalPrice = app.session.get('totalPrice') %}
                             {% if session %}
                                 {% for p in session %}
                                 <tr>
                                     <td>{{ p.id }}</td>
                                     <td>{{ p.name }}</td>
-                                    <td>{{ p.price }}</td>
                                     <td>{{ p.quantityInStock }}</td>
+                                    <td class="test">{{ p.price }}</td>
                                 </tr>
                                 {% endfor %}
                             {% endif %}
                             <!-- End Loop -->
                             </tbody>
+                            <tfoot style="font-weight: bold">
+                            <td colspan="3" style="font-size: x-large; font-family: Cambria; text-align: center">Total</td>
+                            {% if totalPrice %}
+                            <td style="font-size: x-large; font-family: Cambria" id="total">{{ totalPrice }}</td>
+                            {% else %}
+                                <td style="font-size: x-large; font-family: Cambria" id="total">0</td>
+                            {% endif %}
+                            </tfoot>
+
                         </table>
                     </div>
                 </div>
@@ -116,9 +126,8 @@
                     table.append(" <tr>\n" +
                         "                                <td>"+ prod.id +"</td>\n" +
                         "                                <td>"+ prod.name +"</td>\n" +
-                        "                                <td>"+ prod.price +"</td>\n" +
                         "                                <td>"+ prod.quantityInStock +"</td>\n" +
-
+                        "                                <td>"+ prod.price +"</td>\n" +
                         "                                <td>\n" +
                         "                                    <button class=\"badge badge-success\" onclick='addToCart(" + prod.id + ")'>+</button>\n" +
                         "                                </td>\n" +
@@ -130,28 +139,46 @@
             }
         })
     }
-
+    let total = parseInt(document.getElementById('total').innerText);
     function addToCart(id) {
-        console.log(id)
         $.ajax({
             url:"{{ path('save_product_session') }}",
             method: "GET",
+            async: false,
             dataType: 'json',
             data : {
                 id: id,
             },
             success: (e) => {
+
                 console.log(e)
                 let table = $('#cartBody');
 
                     table.append(
                         " <tr>\n" +
                         "                                <td>" + e.id + "</td>\n" +
-                        "                                <td>" +e.name + "</td>\n" +
-                        "                                <td>" +e.price + "</td>\n" +
-                        "                                <td>" +e.quantityInStock + "</td>\n" +
+                        "                                <td>" + e.name + "</td>\n" +
+                        "                                <td>" + e.quantityInStock + "</td>\n" +
+                        "                                <td class='unitprice'>" + e.price + "</td>\n" +
                         "                            </tr>"
                     )
+                total += e.price;
+                let result = document.getElementById('total')
+                result.innerText = total;
+            },
+            error : (f) => {
+                console.log(f);
+            }
+        })
+
+
+
+        $.ajax({
+            url:"{{ path('save_totalPrice_session') }}",
+            method: "GET",
+            dataType: 'json',
+            data : {totalPrice:total},
+            success: (e) => {
 
             },
             error : (f) => {

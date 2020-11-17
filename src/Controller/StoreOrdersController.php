@@ -94,4 +94,16 @@ class StoreOrdersController extends AbstractController
         return new Response('use Ajax');
     }
 
+    /**
+     * @Route("/manager/store/savetotalsession", name="save_totalPrice_session")
+     */
+    public function saveTotalPriceSession(Request $request): Response
+    {
+        if($request->isXmlHttpRequest()) {
+            $totalPrice = $request->get('totalPrice');
+            $this->session->set('totalPrice', $totalPrice);
+        }
+        return new Response('use Ajax');
+    }
+
 }
