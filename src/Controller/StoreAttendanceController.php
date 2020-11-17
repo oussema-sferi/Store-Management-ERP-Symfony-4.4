@@ -32,16 +32,18 @@ class StoreAttendanceController extends AbstractController
         if(isset($_POST['employee']) && isset($_POST['check'])) {
             $newAttendance = new Attendance();
             $employee = $this->getDoctrine()->getRepository(Employee::class)->find($_POST['employee']);
+            $attendanceToUpd = $this->getDoctrine()->getRepository(Attendance::class)->getAttendanceWhereEmployee($_POST['employee']);
             $newAttendance->setEmployee($employee);
             if($_POST['check'] == 'checkin') {
-                $newAttendance->setCheckIn(new \DateTime());
-                $newAttendance->setCheckOut(new \DateTime());
-                $newAttendance->setIsValid(true);
-                $manager = $this->getDoctrine()->getManager();
-                $manager->persist($newAttendance);
-                $manager->flush();
+                if(!$attendanceToUpd) {
+                    $newAttendance->setCheckIn(new \DateTime());
+                    $newAttendance->setCheckOut(new \DateTime());
+                    $newAttendance->setIsValid(true);
+                    $manager = $this->getDoctrine()->getManager();
+                    $manager->persist($newAttendance);
+                    $manager->flush();
+                }
             } elseif ($_POST['check'] == 'checkout') {
-                $attendanceToUpd = $this->getDoctrine()->getRepository(Attendance::class)->getAttendanceWhereEmployee($_POST['employee']);
                 if($attendanceToUpd && $attendanceToUpd[0]->getIsValid()) {
                     $attendanceToUpd[0]->setCheckOut(new \DateTime());
                     $attendanceToUpd[0]->setIsValid(false);

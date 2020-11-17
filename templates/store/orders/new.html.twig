@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--7" id="cont">
         <!-- Table -->
         <div class="row">
             <div class="col">
@@ -19,13 +19,14 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <select class="form-control " placeholder="Category" style="width: 250px" id="category" onchange="fetchProducts()">
+                                    <option value="">Select A Category</option>
                                     {% for catManager in catsManager %}
                                     <option value="{{ catManager.id }}">{{ catManager.title }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <input type="text" class="form-control " placeholder="Search Table" id="contact-filter">
+                                <input type="text" class="form-control " placeholder="Search By Name" id="contact-filter">
                             </div>
                         </div>
                     </div>
@@ -36,8 +37,7 @@
                                 <th scope="col">id</th>
                                 <th scope="col">name</th>
                                 <th scope="col">price</th>
-                                <th scope="col" >Update</th>
-                                <th scope="col" >Delete</th>
+                                <th scope="col" >add to cart</th>
                             </tr>
                             </thead>
                             <tbody id="categoriesBody">
@@ -47,17 +47,53 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer py-4">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid mt-7" id="cont">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h3 class="mb-0" style="text-align: center">My Cart</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive" id="categoriesTable">
+                        <table class="table align-items-center table-flush tablesorter tablepager">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">name</th>
+                                <th scope="col">unit price</th>
+                            </tr>
+                            </thead>
+                            <tbody id="cartBody">
+                            <!-- Loop -->
+                            {% set session = app.session.get('products') %}
+                            {% if session %}
+                                {% for p in session %}
+                                <tr>
+                                    <td>{{ p.id }}</td>
+                                    <td>{{ p.name }}</td>
+                                    <td>{{ p.price }}</td>
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+                            <!-- End Loop -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <button class="btn btn-icon btn-3 btn-primary" type="button" style="margin-top: 2em">
-            <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
-            <span class="btn-inner--text">Add a new order</span>
-        </button>
-    </div>
 
+    </div>
 
 {% endblock %}
 {% block internalJs %}
@@ -65,7 +101,6 @@
     <script>
     function fetchProducts() {
        let selectedCat = $('#category');
-       console.log(selectedCat.val());
         $.ajax({
             url:"{{ path('fetch_products') }}",
             method: "GET",
@@ -74,16 +109,13 @@
             success: (e) => {
                 let table = $('#categoriesBody');
                 table.empty();
-                e.forEach(payload => {
+                e.forEach(prod => {
                     table.append(" <tr>\n" +
-                        "                                <td>"+ payload.id +"</td>\n" +
-                        "                                <td>"+ payload.name +"</td>\n" +
-                        "                                <td>"+ payload.price +"</td>\n" +
-                        "                                <td >\n" +
-                        "                                    <a href=\"\"  class=\"badge badge-info\" >Update</a>\n" +
-                        "                                </td>\n" +
-                        "                                <td >\n" +
-                        "                                    <a href=\"\" class=\"badge badge-danger\">Delete</a>\n" +
+                        "                                <td>"+ prod.id +"</td>\n" +
+                        "                                <td>"+ prod.name +"</td>\n" +
+                        "                                <td>"+ prod.price +"</td>\n" +
+                        "                                <td>\n" +
+                        "                                    <button class=\"badge badge-success\" onclick='addToCart(" + prod.id + ")'>+</button>\n" +
                         "                                </td>\n" +
                         "                            </tr>")
                 })
@@ -94,6 +126,33 @@
         })
     }
 
+    function addToCart(id) {
+        console.log(id)
+        $.ajax({
+            url:"{{ path('save_product_session') }}",
+            method: "GET",
+            dataType: 'json',
+            data : {
+                id: id,
+            },
+            success: (e) => {
+                console.log(e)
+                let table = $('#cartBody');
+
+                    table.append(
+                        " <tr>\n" +
+                        "                                <td>" + e.id + "</td>\n" +
+                        "                                <td>" +e.name + "</td>\n" +
+                        "                                <td>" +e.price + "</td>\n" +
+                        "                            </tr>"
+                    )
+
+            },
+            error : (f) => {
+                console.log(f);
+            }
+        })
+    }
     </script>
 
 
