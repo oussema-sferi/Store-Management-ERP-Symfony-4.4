@@ -61,14 +61,38 @@
                             <span class="nav-link-inner--text">CheckIn</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-icon" href="">
-                            <i class="ni ni-key-25"></i>
-                            <span class="nav-link-inner--text">Logout</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
+            <ul class="navbar-nav align-items-center d-none d-md-flex">
+                {% if app.user %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-4-800x800.jpg') }}">
+                </span>
+                                <div class="media-body ml-2 d-none d-lg-block">
+                                    <span class="mb-0 text-sm  font-weight-bold">{{ app.user.fullName }}</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                            <div class=" dropdown-header noti-title">
+                                <h6 class="text-overflow m-0">Welcome!</h6>
+                            </div>
+                            <a href="" class="dropdown-item">
+                                <i class="ni ni-single-02"></i>
+                                <span>Profile</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ path('security_logout') }}" class="dropdown-item">
+                                <i class="ni ni-user-run"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
     </nav>
 

@@ -92,7 +92,7 @@
                             <!-- End Loop -->
                             </tbody>
                             <tfoot style="font-weight: bold">
-                            <td colspan="3" style="font-size: x-large; font-family: Cambria; text-align: center">Total</td>
+                            <td colspan="3" style="font-size: x-large; font-family: Cambria; text-align: center">Total Price:</td>
                             {% if totalPrice %}
                             <td style="font-size: x-large; font-family: Cambria" id="total">{{ totalPrice }}</td>
                             {% else %}
@@ -151,12 +151,11 @@
             },
             success: (e) => {
 
-                console.log(e)
                 let table = $('#cartBody');
 
                     table.append(
                         " <tr>\n" +
-                        "                                <td>" + e.id + "</td>\n" +
+                        "                                <td class='prodid'>" + e.id + "</td>\n" +
                         "                                <td>" + e.name + "</td>\n" +
                         "                                <td>" + e.quantityInStock + "</td>\n" +
                         "                                <td class='unitprice'>" + e.price + "</td>\n" +
@@ -182,7 +181,7 @@
 
             },
             error : (f) => {
-                console.log(f);
+
             }
         })
     }
