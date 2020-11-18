@@ -7,6 +7,7 @@ use App\Entity\Employee;
 use App\Form\AttendanceFormType;
 use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,11 +17,12 @@ class StoreAttendanceController extends AbstractController
     /**
      * @Route("/manager/store/attendance", name="store_attendance")
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-
+        $currentUser = $this->getUser();
+        $employeesManager = $this->getDoctrine()->getRepository(Employee::class)->getEmployeesWhereStoresWhereManager($currentUser->getId());
         return $this->render('/store/attendance/index.html.twig', [
-            'employees' => $this->getDoctrine()->getRepository(Employee::class)->findAll(),
+            'employees' => $employeesManager
         ]);
     }
 

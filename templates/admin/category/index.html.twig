@@ -40,7 +40,7 @@
                             {% for category in categories %}
                             <tr>
                                 <td>{{ category.title }}</td>
-                                <td> Not Provided</td>
+                                <td>{{ category.store }}</td>
                                 <td >
                                     <a href="{{ path('update_category', {'id': category.id}) }}"  class="badge badge-info" >Update</a>
                                 </td>

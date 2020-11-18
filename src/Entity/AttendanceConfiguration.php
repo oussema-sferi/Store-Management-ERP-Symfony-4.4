@@ -42,6 +42,11 @@ class AttendanceConfiguration
      */
     private $store;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -111,5 +116,24 @@ class AttendanceConfiguration
         }
 
         return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->getName();
+        // to show the id of the Category in the select
+        // return $this->id;
     }
 }

@@ -47,4 +47,14 @@ class EmployeeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getEmployeesWhereStoresWhereManager($managerId)
+    {
+        return $this->createQueryBuilder('e')
+            ->join('e.store', 's')
+            ->join('s.manager', 'm')
+            ->where("m.id = $managerId")
+            ->getQuery()
+            ->getResult();
+    }
 }

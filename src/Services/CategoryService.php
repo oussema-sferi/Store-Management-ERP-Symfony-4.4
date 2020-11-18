@@ -22,6 +22,7 @@ class CategoryService
     public function update($categoryToUpdate, $newCategory)
     {
         $categoryToUpdate->setTitle($newCategory->getTitle());
+        $categoryToUpdate->setStore($newCategory->getStore());
         $this->manager->getManager()->persist($categoryToUpdate);
         $this->manager->getManager()->flush();
     }

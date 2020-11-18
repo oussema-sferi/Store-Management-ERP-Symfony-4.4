@@ -12,6 +12,7 @@ class AttendanceConfigurationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name')
             ->add('bonusAmount')
             ->add('malusAmount')
             ->add('checkInTime')
