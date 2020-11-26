@@ -29,7 +29,7 @@
                         <table class="table align-items-center table-flush tablesorter tablepager">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Store</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Bonus Amount</th>
                                 <th scope="col">Malus Amount</th>
                                 <th scope="col">Check-In Time</th>
@@ -42,7 +42,7 @@
                             <!-- Loop -->
                             {% for attendanceConfig in attendancesConfig %}
                             <tr>
-                                <td>{{ attendanceConfig.store }}</td>
+                                <td>{{ attendanceConfig.name }}</td>
                                 <td>{{ attendanceConfig.bonusAmount }}</td>
                                 <td>{{ attendanceConfig.malusAmount }}</td>
                                 <td>{{ attendanceConfig.checkInTime | date('H:i') }}</td>

@@ -32,6 +32,7 @@
                                 <th scope="col">Employee</th>
                                 <th scope="col">Check In</th>
                                 <th scope="col" >Check Out</th>
+                                <th scope="col" >Status</th>
                             </tr>
                             </thead>
                             <tbody id="categoriesBody">
@@ -41,6 +42,11 @@
                                     <td>{{ attendance.employee }}</td>
                                     <td>{{ attendance.checkIn | date }}</td>
                                     <td>{{ attendance.checkOut | date }}</td>
+                                    {% if attendance.isValid %}
+                                        <td>Valid</td>
+                                    {% else %}
+                                        <td>Not Valid</td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                             <!-- End Loop -->

@@ -37,7 +37,8 @@
                                 <th scope="col">id</th>
                                 <th scope="col">name</th>
                                 <th scope="col">stock</th>
-                                <th scope="col">price</th>
+                                <th scope="col">unit price</th>
+                                <th scope="col">quantity</th>
                                 <th scope="col" >add to cart</th>
                             </tr>
                             </thead>
@@ -71,23 +72,25 @@
                             <tr>
                                 <th scope="col">id</th>
                                 <th scope="col">name</th>
-                                <th scope="col">stock</th>
                                 <th scope="col">unit price</th>
+                                <th scope="col">quantity</th>
+                                <th scope="col">total price</th>
                             </tr>
                             </thead>
                             <tbody id="cartBody">
                             <!-- Loop -->
-                            {% set session = app.session.get('products') %}
+                            {% set data = app.session.get('data') %}
                             {% set totalPrice = app.session.get('totalPrice') %}
-                            {% if session %}
-                                {% for p in session %}
+                            {% if data %}
+                            {% for element in data %}
                                 <tr>
-                                    <td>{{ p.id }}</td>
-                                    <td>{{ p.name }}</td>
-                                    <td>{{ p.quantityInStock }}</td>
-                                    <td class="test">{{ p.price }}</td>
+                                    <td>{{ element[0] }}</td>
+                                    <td>{{ element[1]}}</td>
+                                    <td>{{ element[3] }}</td>
+                                    <td>{{ element[4] }}</td>
+                                    <td >{{ element[5] }}</td>
                                 </tr>
-                                {% endfor %}
+                            {% endfor %}
                             {% endif %}
                             <!-- End Loop -->
                             </tbody>
@@ -123,16 +126,42 @@
                 let table = $('#categoriesBody');
                 table.empty();
                 e.forEach(prod => {
+                    let str = `${prod.id}, "${prod.name}", ${prod.quantityInStock}, ${prod.price}`
                     table.append(" <tr>\n" +
                         "                                <td>"+ prod.id +"</td>\n" +
                         "                                <td>"+ prod.name +"</td>\n" +
                         "                                <td>"+ prod.quantityInStock +"</td>\n" +
                         "                                <td>"+ prod.price +"</td>\n" +
+                        "                                                            <td class=\"invert\">\n" +
+                        "                                        <div class=\"quantity\">\n" +
+                        "                                            <div class=\"quantity-select\">\n" +
+                        "                                                <div class=\"entry value-minus\">&nbsp;</div>\n" +
+                        "                                                <div class=\"entry value\" id=\"increment-"+prod.id+"\">\n" +
+                        "                                                    1\n" +
+                        "                                                </div>\n" +
+                        "                                                <div class=\"entry value-plus active\">&nbsp;</div>\n" +
+                        "                                            </div>\n" +
+                        "                                        </div>\n" +
+                        "                                    </td>\n" +
                         "                                <td>\n" +
-                        "                                    <button class=\"badge badge-success\" onclick='addToCart(" + prod.id + ")'>+</button>\n" +
+                        "                                    <button class=\"badge badge-success\" onclick='addToCart(" + str + ")'>Add</button>\n" +
                         "                                </td>\n" +
                         "                            </tr>")
                 })
+
+                ///////increment and decrement quantity
+                $('.value-plus').on('click', function () {
+                    var divUpd = $(this).parent().find('.value'),
+                        newVal = parseInt(divUpd.text(), 10) + 1;
+
+                    divUpd.html(newVal);
+                });
+
+                $('.value-minus').on('click', function () {
+                    var divUpd = $(this).parent().find('.value'),
+                        newVal = parseInt(divUpd.text(), 10) - 1;
+                    if (newVal >= 1) divUpd.text(newVal);
+                });
             },
             error : (f) => {
                 console.log(f);
@@ -140,14 +169,19 @@
         })
     }
     let total = parseInt(document.getElementById('total').innerText);
-    function addToCart(id) {
+
+    function addToCart(id, name, quantityInStock, price) {
+        let quantityPerProduct = updateRowQuantity(id);
+        let totalPrice = quantityPerProduct * price;
+        prodInfo = [id, name, quantityInStock, price, quantityPerProduct, totalPrice];
+        console.log(prodInfo);
         $.ajax({
             url:"{{ path('save_product_session') }}",
             method: "GET",
             async: false,
             dataType: 'json',
             data : {
-                id: id,
+                product: prodInfo
             },
             success: (e) => {
 
@@ -155,13 +189,14 @@
 
                     table.append(
                         " <tr>\n" +
-                        "                                <td class='prodid'>" + e.id + "</td>\n" +
-                        "                                <td>" + e.name + "</td>\n" +
-                        "                                <td>" + e.quantityInStock + "</td>\n" +
-                        "                                <td class='unitprice'>" + e.price + "</td>\n" +
+                        "                                <td class='prodid'>" + id + "</td>\n" +
+                        "                                <td>" + name + "</td>\n" +
+                        "                                <td class='unitprice'>" + price + "</td>\n" +
+                        "                                <td>" + quantityPerProduct + "</td>\n" +
+                        "                                <td>"+ totalPrice +"</td>\n" +
                         "                            </tr>"
                     )
-                total += e.price;
+                total += totalPrice;
                 let result = document.getElementById('total')
                 result.innerText = total;
             },
@@ -185,6 +220,19 @@
             }
         })
     }
+
+
+
+    /////////////////////////////////////Script for updating quantity
+
+    function updateRowQuantity(id) {
+
+        let quantity = Number.parseInt($("#increment-"+id).text());
+        return quantity;
+    }
+
+
+
     </script>
 
 

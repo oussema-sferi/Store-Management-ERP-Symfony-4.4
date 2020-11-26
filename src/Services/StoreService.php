@@ -26,6 +26,9 @@ class StoreService
         $storeToUpdate->setPhone($newStore->getPhone());
         $storeToUpdate->setLogin($newStore->getLogin());
         $storeToUpdate->setPassword($newStore->getPassword());
+        $storeToUpdate->setIsActive($newStore->getIsActive());
+        $storeToUpdate->setManager($newStore->getManager());
+        $storeToUpdate->setAttendanceConfiguration($newStore->getAttendanceConfiguration());
         $this->manager->getManager()->persist($storeToUpdate);
         $this->manager->getManager()->flush();
     }

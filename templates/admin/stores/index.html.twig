@@ -51,7 +51,7 @@
                                 <td>{{ store.password }}</td>
                                 <td>{{ store.isActive }}</td>
                                 <td>{{ store.manager }}</td>
-                                <td>Not Provided</td>
+                                <td>{{ store.attendanceConfiguration }}</td>
                                 <td>{{ store.creationDate | date }}</td>
                                 <td >
                                     <a href="{{ path('update_store', {'id': store.id}) }}"  class="badge badge-info" >Update</a>

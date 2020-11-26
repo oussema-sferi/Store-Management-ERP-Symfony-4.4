@@ -76,16 +76,14 @@ class StoreOrdersController extends AbstractController
     public function saveProdSession(Request $request): Response
     {
         if($request->isXmlHttpRequest()) {
-            $id = $request->get('id');
-            $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
-            $savedProducts = $this->session->get('products');
-            if($savedProducts) {
-                $savedProducts[]= $product;
-                $this->session->set('products', $savedProducts);
+            $product = $request->get('product');
+            $savedProducts = $this->session->get('data');
+            if( $savedProducts) {
+                $savedProducts[] = $product;
+                $this->session->set('data', $savedProducts);
             } else {
-                $newArray = [];
-                array_push($newArray,$product);
-                $this->session->set('products', $newArray);
+                $newArrayProd[] = $product;
+                $this->session->set('data', $newArrayProd);
             }
             $serializer = new Serializer([new ObjectNormalizer()]);
             $result = $serializer->normalize($product,'json',['attributes' => ['id','name','price', 'quantityInStock']]);

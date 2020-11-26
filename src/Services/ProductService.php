@@ -23,6 +23,9 @@ class ProductService
     {
         $productToUpdate->setName($newProduct->getName());
         $productToUpdate->setPrice($newProduct->getPrice());
+        $productToUpdate->setQuantityInStock($newProduct->getQuantityInStock());
+        $productToUpdate->setCategory($newProduct->getCategory());
+        $productToUpdate->setStore($newProduct->getStore());
         $this->manager->getManager()->persist($productToUpdate);
         $this->manager->getManager()->flush();
     }

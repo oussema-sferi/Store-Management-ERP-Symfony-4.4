@@ -47,4 +47,18 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getProductsWhereCategoriesWhereStoresWhereManager($catId, $managerId)
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.category', 'c')
+            ->join('c.store', 's')
+            ->join('s.manager', 'm')
+            ->where("c.id = $catId")
+            ->andWhere("m.id = $managerId")
+            ->getQuery()
+            ->getResult();
+    }
+
+
 }
